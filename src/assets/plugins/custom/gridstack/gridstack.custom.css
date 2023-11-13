@@ -1,0 +1,37 @@
+﻿@import "gridstack.min.css";
+
+.grid-stack-item-content {
+    border-radius: 5px;
+    padding: 5px;
+    --kt-bg-rgb-color: var(--kt-light-rgb);
+    background-color: var(--kt-light) !important;
+    position: relative;
+}
+
+/*.grid-stack-item-content > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}*/
+
+.grid-stack-item-content > .name-container {
+    position: absolute;
+    text-align: center;
+    top: 25px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.grid-stack-item-content > .buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
