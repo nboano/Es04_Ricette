@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { InsertRecipeComponent } from './insert-recipe/insert-recipe.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { FormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { InsertRecipeComponent } from './insert-recipe/insert-recipe.component';
     RecipesListComponent,
     HeaderComponent,
     SidebarComponent,
-    InsertRecipeComponent
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularEditorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

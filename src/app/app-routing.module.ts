@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
-import { InsertRecipeComponent } from './insert-recipe/insert-recipe.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   {
@@ -14,13 +14,13 @@ const routes: Routes = [
     component: RecipesListComponent
   },
   {
-    path: "insert-recipe",
-    component: InsertRecipeComponent
+    path: "recipe-detail/:id",
+    component: RecipeDetailComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash : true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

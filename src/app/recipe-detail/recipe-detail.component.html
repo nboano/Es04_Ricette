@@ -1,0 +1,56 @@
+<div class="m-5">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{{ricetta.Nome}}</h3>
+            <div class="card-toolbar">
+                <button type="button" class="btn btn-sm btn-primary" (click)="saveRecipe()">
+                    Salva
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-sm btn-danger" (click)="deleteRecipe()" *ngIf="ricetta.IdRicetta != -1">
+                    Elimina
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label for="txtNomeRicetta" class="form-label">Nome ricetta</label>
+                    <div class="input-group input-group-solid mb-5">
+                        <input type="text" class="form-control form-control-solid" id="txtNomeRicetta" placeholder="" [(ngModel)]="ricetta.Nome"/>
+                    </div>
+        
+                    <label for="txtDesc" class="form-label">Descrizione</label>
+                    <div class="input-group input-group-solid mb-5">
+                        <textarea class="form-control form-control-solid" style="height: 100px;" id="txtDesc" [(ngModel)]="ricetta.Descrizione"></textarea>
+                    </div>
+
+                    <label for="txtImgUrl" class="form-label">URL Immagine</label>
+                    <div class="input-group input-group-solid mb-5">
+                        <input type="url" class="form-control form-control-solid" id="txImgUrl" placeholder="" [(ngModel)]="ricetta.PathImg"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="selDifficolta" class="form-label">Difficolt&agrave;</label>&nbsp;&nbsp;<span class="badge badge-primary">{{ricetta.Difficolta}}</span>
+                            <input type="range" class="form-range" id="selDifficolta" min="1" max="5" step="1" [(ngModel)]="ricetta.Difficolta" />
+                        </div>
+                        <div class="col-6">
+                            <label for="selTempo" class="form-label">Tempo</label>&nbsp;&nbsp;<span class="badge badge-primary">{{ricetta.TempoEsecuzione}} min</span>
+                            <input type="range" class="form-range" id="selDifficolta" min="1" max="200" step="1" [(ngModel)]="ricetta.TempoEsecuzione" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <img src="{{ricetta.PathImg}}" class="rounded w-100"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <br/>
+                    <angular-editor [(ngModel)]="ricetta.Istruzioni"></angular-editor>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

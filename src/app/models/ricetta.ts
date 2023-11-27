@@ -6,7 +6,6 @@ export class Ricetta {
     Difficolta! : number;
     Descrizione! : string;
     PathImg! : string;
-    PathIstruzioni! : string;
+    Istruzioni! : string;
     TempoEsecuzione! : number;
-    Ingredienti! : Ingrediente[];
 };

@@ -24,11 +24,15 @@ export class ApiService {
   }
 
   public async GetRicetta(id : number) : Promise<Ricetta> {
-    return (await this.performRequest("GET", "ricette?id=" + id)) as Ricetta;
+    return (await this.performRequest("GET", "ricette/?id=" + id)) as Ricetta;
   }
 
-  public async EditRicetta(id : number, ricetta : Ricetta) {
-    return (await this.performRequest("POST", "editRicette?id=" + id, ricetta));
+  public async EditRicetta(ricetta : Ricetta) {
+    return (await this.performRequest("POST", "edit-ricetta/", ricetta));
+  }
+
+  public async DeleteRicetta(ricetta : Ricetta) {
+    return (await this.performRequest("GET", "del-ricetta/?id=" + ricetta.IdRicetta));
   }
 
   constructor() { }

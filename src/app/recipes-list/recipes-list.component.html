@@ -1,8 +1,8 @@
 <div class="m-5">
     <h1>In evidenza</h1>
     
-    <div style="margin: 0 auto;">
-        <div *ngFor="let ricetta of lstRicette; let i = index" class="card overlay overlay-block overflow-hidden m-2" style="width: 45%;float: left;cursor: default;">
+    <div style="margin: 0 auto; width: fit-content; height: fit-content;">
+        <div *ngFor="let ricetta of lstRicette; let i = index" class="card overlay overlay-block overflow-hidden hover-scale m-2" style="width: 45%;float: left;cursor: pointer;" [routerLink]="['/recipe-detail', ricetta.IdRicetta]">
             <div class="card-body p-0">
                 <div class="overlay-wrapper">
                     <img src="{{ricetta.PathImg}}" alt="{{ricetta.Nome}}" class="w-100 rounded"/>
@@ -12,15 +12,19 @@
                         <h1 class="text-white">{{ricetta.Nome}}</h1>
                         <small>
                             <b>
-                                <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - {{ricetta.Difficolta}}
+                                <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <i class="fa fa-star" *ngFor="let x of [].constructor(ricetta.Difficolta)"></i>
                             </b>
                         </small>
                     </div>
                 </div>
                 <div class="overlay-layer bg-light bg-opacity-50 theme-dark-show">
-                    <div class="text-dark text-center">
-                        <h1 class="text-dark">{{ricetta.Nome}}</h1>
-                        <small></small>
+                    <div class="text-white text-center">
+                        <h1 class="text-white">{{ricetta.Nome}}</h1>
+                        <small>
+                            <b>
+                                <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <i class="fa fa-star" *ngFor="let x of [].constructor(ricetta.Difficolta)"></i>
+                            </b>
+                        </small>
                     </div>
                 </div>
             </div>
