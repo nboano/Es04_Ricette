@@ -1,34 +1,44 @@
 <div class="m-5">
-    <h1>In evidenza</h1>
-    
-    <div style="margin: 0 auto; width: fit-content; height: fit-content;">
-        <div *ngFor="let ricetta of lstRicette; let i = index" class="card overlay overlay-block overflow-hidden hover-scale m-2" style="width: 45%;float: left;cursor: pointer;" [routerLink]="['/recipe-detail', ricetta.IdRicetta]">
-            <div class="card-body p-0">
-                <div class="overlay-wrapper">
-                    <img src="{{ricetta.PathImg}}" alt="{{ricetta.Nome}}" class="w-100 rounded"/>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">In evidenza</h2>
+            <div class="card-toolbar">
+                <div class="input-group input-group-solid">
+                    <input type="text" class="form-control form-control-solid"  placeholder="Filtra..." [(ngModel)]="searchQuery" (ngModelChange)="onSearch()"/>
                 </div>
-                <div class="overlay-layer bg-dark bg-opacity-50 theme-light-show">
-                    <div class="text-white text-center">
-                        <h1 class="text-white">{{ricetta.Nome}}</h1>
-                        <small>
-                            <b>
-                                <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <i class="fa fa-star" *ngFor="let x of [].constructor(ricetta.Difficolta)"></i>
-                            </b>
-                        </small>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" *ngFor="let ricetta of lstRicette; let i = index">
+            <div class="card overlay overlay-block overflow-hidden hover-scale m-2" [routerLink]="['/recipe-detail', ricetta.IdRicetta]" style="cursor: pointer;">
+                <div class="card-body p-0">
+                    <div class="overlay-wrapper">
+                        <img src="{{ricetta.PathImg}}" alt="{{ricetta.Nome}}" class="w-100 rounded" style="aspect-ratio: 16/9;"/>
                     </div>
-                </div>
-                <div class="overlay-layer bg-light bg-opacity-50 theme-dark-show">
-                    <div class="text-white text-center">
-                        <h1 class="text-white">{{ricetta.Nome}}</h1>
-                        <small>
-                            <b>
-                                <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <i class="fa fa-star" *ngFor="let x of [].constructor(ricetta.Difficolta)"></i>
-                            </b>
-                        </small>
+                    <div class="overlay-layer bg-dark bg-opacity-50 theme-light-show">
+                        <div class="text-white text-center">
+                            <h1 class="text-white">{{ricetta.Nome}}</h1>
+                            <small>
+                                <b>
+                                    <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <span [innerHTML]="getStarsHTML(ricetta.Difficolta)"></span>
+                                </b>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="overlay-layer bg-light bg-opacity-50 theme-dark-show">
+                        <div class="text-dark text-center">
+                            <h1 class="text-dark">{{ricetta.Nome}}</h1>
+                            <small>
+                                <b>
+                                    <i class="fa fa-clock"></i> {{ricetta.TempoEsecuzione}} min - <span [innerHTML]="getStarsHTML(ricetta.Difficolta)"></span>
+                                </b>
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>

@@ -20,8 +20,8 @@ export class ApiService {
     })).json();
   }
 
-  public async GetRicette() : Promise<Ricetta[]> {
-    return (await this.performRequest("GET", "ricette/")) as Ricetta[];
+  public async GetRicette(name_filter : string = "") : Promise<Ricetta[]> {
+    return (await this.performRequest("GET", "ricette/?q=" + name_filter)) as Ricetta[];
   }
 
   public async GetRicetta(id : number) : Promise<Ricetta> {

@@ -11,8 +11,18 @@ export class RecipesListComponent {
   private readonly _apiService : ApiService;
   public lstRicette! : Ricetta[];
 
+  public searchQuery : string = "";
+
   constructor(apiService : ApiService) {
     this._apiService = apiService;
-    this._apiService.GetRicette().then(ricette => this.lstRicette = ricette);
+    this._apiService.GetRicette(this.searchQuery).then(ricette => this.lstRicette = ricette);
+  }
+
+  onSearch() {
+    this._apiService.GetRicette(this.searchQuery).then(ricette => this.lstRicette = ricette);
+  }
+
+  getStarsHTML(diff : number) {
+    return "<i class='fa fa-star'></i>".repeat(diff);
   }
 }
