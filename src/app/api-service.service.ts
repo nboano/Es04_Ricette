@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ricetta } from './models/ricetta';
+import { Ingrediente } from './models/ingrediente';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,14 @@ export class ApiService {
 
   public async DeleteRicetta(ricetta : Ricetta) {
     return (await this.performRequest("GET", "del-ricetta/?id=" + ricetta.IdRicetta));
+  }
+
+  public async GetIngredienti(ricetta : Ricetta) : Promise<Ingrediente[]> {
+    return (await this.performRequest("GET", "ingr-ricetta/?id=" + ricetta.IdRicetta)) as Ingrediente[];
+  }
+
+  public async UpdateIngredienti(ricetta : Ricetta, ingr : Ingrediente[]) {
+    return (await this.performRequest("POST", "ingr-ricetta-update/?id=" + ricetta.IdRicetta, ingr));
   }
 
   constructor() { }

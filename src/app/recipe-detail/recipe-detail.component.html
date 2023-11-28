@@ -47,6 +47,51 @@
             </div>
             <div class="row">
                 <div class="col-12">
+                    <br>
+                    <h4>Ingredienti per una persona</h4>
+                    <div *ngIf="ricetta.IdRicetta == -1">
+                        <i>Prima di inserire gli ingredienti, esegui il salvataggio.</i>
+                    </div>
+                    <table class="table table-rounded border" *ngIf="ricetta.IdRicetta != -1">
+                        <thead>
+                            <tr>
+                                <th>Ingrediente</th>
+                                <th colspan="2">Dose</th>
+                                <th>
+                                    <button class="btn btn-sm btn-primary" (click)="aggiungiIngr()">Aggiungi</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ingrediente of ingredienti; index as i">
+                                <td><input type="text" class="form-control form-control-solid" [(ngModel)]="ingrediente.Ingrediente"/></td>
+                                <td><input type="number" class="form-control form-control-solid" [(ngModel)]="ingrediente.Dose"/></td>
+                                <td><input type="text" class="form-control form-control-solid" [(ngModel)]="ingrediente.UMisura"/></td>
+                                <td><button class="btn btn-sm btn-danger" (click)="rimuoviIngr(i)">&nbsp;<i class="fa fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12" *ngIf="ricetta.IdRicetta != -1">
+                    <br>
+                    <h4>Ingredienti per <input type="number" min="2" max="15" [(ngModel)]="nPersone" (change)="calcIngrNPersone()"/> persone</h4>
+                    <table class="table table-rounded border" *ngIf="ricetta.IdRicetta != -1">
+                        <thead>
+                            <tr>
+                                <th>Ingrediente</th>
+                                <th colspan="2">Dose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ingrediente of ingredientiNPersone;">
+                                <td><input type="text" readonly class="form-control form-control-solid" [(ngModel)]="ingrediente.Ingrediente"/></td>
+                                <td><input type="number" readonly class="form-control form-control-solid" [(ngModel)]="ingrediente.Dose"/></td>
+                                <td><input type="text" readonly class="form-control form-control-solid" [(ngModel)]="ingrediente.UMisura"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12">
                     <br/>
                     <angular-editor [(ngModel)]="ricetta.Istruzioni"></angular-editor>
                 </div>
